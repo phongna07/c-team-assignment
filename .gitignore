@@ -1,0 +1,66 @@
+# =========================
+# C build artifacts
+# =========================
+*.o
+*.obj
+*.lo
+*.la
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+data.txt
+
+# Debug symbols and coverage/profiling
+*.dSYM/
+*.gcda
+*.gcno
+*.gcov
+*.prof
+*.profraw
+*.profdata
+
+# Dependency files and temporary build files
+*.d
+*.tmp
+*.temp
+
+# Project binaries
+/gpa_manager
+
+# =========================
+# macOS artifacts
+# =========================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# =========================
+# Windows artifacts
+# =========================
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# =========================
+# Linux / Unix artifacts
+# =========================
+*~
+.nfs*
+
+# =========================
+# Editor/IDE temp files
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
