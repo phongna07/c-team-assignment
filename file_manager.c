@@ -4,18 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-static void TrimNewline(char* text) {
-  size_t len = strlen(text);
-
-  if (len == 0) {
-    return;
-  }
-
-  if (text[len - 1] == '\n') {
-    text[len - 1] = '\0';
-  }
-}
-
 int LoadCoursesFromFile(const char* filename, Course** head) {
   FILE* file = fopen(filename, "r");
   char line[512];
@@ -30,8 +18,11 @@ int LoadCoursesFromFile(const char* filename, Course** head) {
     char* grade = NULL;
     char* save_ptr = NULL;
     int credits = 0;
+    size_t len = strlen(line);
 
-    TrimNewline(line);
+    if (len > 0 && line[len - 1] == '\n') {
+      line[len - 1] = '\0';
+    }
 
     course_name = strtok_r(line, "|", &save_ptr);
     credits_text = strtok_r(NULL, "|", &save_ptr);
