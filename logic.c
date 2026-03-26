@@ -4,16 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* StringDuplicate(const char* source) {
-  size_t length = strlen(source);
-  char* result = (char*)malloc(length + 1);
-  if (result == NULL) {
-    return NULL;
-  }
-  memcpy(result, source, length + 1);
-  return result;
-}
-
 int AddCourse(Course** head, const char* name, int credits, const char* grade) {
   Course* node = (Course*)malloc(sizeof(Course));
   Course* current = NULL;
@@ -22,8 +12,8 @@ int AddCourse(Course** head, const char* name, int credits, const char* grade) {
     return 0;
   }
 
-  node->name = StringDuplicate(name);
-  node->grade = StringDuplicate(grade);
+  node->name = strdup(name);
+  node->grade = strdup(grade);
   node->credits = credits;
   node->next = NULL;
 
@@ -63,8 +53,8 @@ int EditCourseByIndex(Course* head, int index, const char* name, int credits,
     return 0;
   }
 
-  new_name = StringDuplicate(name);
-  new_grade = StringDuplicate(grade);
+  new_name = strdup(name);
+  new_grade = strdup(grade);
   if (new_name == NULL || new_grade == NULL) {
     free(new_name);
     free(new_grade);
@@ -96,7 +86,7 @@ int DeleteCourseByIndex(Course** head, int index, char** deleted_name) {
   }
 
   if (deleted_name != NULL) {
-    *deleted_name = StringDuplicate(current->name);
+    *deleted_name = strdup(current->name);
   }
 
   if (previous == NULL) {
@@ -177,7 +167,7 @@ void PushActivity(ActivityNode** top, const char* action) {
     return;
   }
 
-  node->action = StringDuplicate(action);
+  node->action = strdup(action);
   if (node->action == NULL) {
     free(node);
     return;

@@ -15,8 +15,6 @@ typedef struct ActivityNode {
   struct ActivityNode* next;
 } ActivityNode;
 
-char* StringDuplicate(const char* source);
-
 int AddCourse(Course** head, const char* name, int credits, const char* grade);
 int EditCourseByIndex(Course* head, int index, const char* name, int credits,
                       const char* grade);
