@@ -5,7 +5,7 @@
 #include <string.h>
 
 int LoadCoursesFromFile(const char* filename, Course** head) {
-  FILE* file = fopen(filename, "r");
+  FILE* file = fopen(filename, "r");  // Requirement 5: File I/O read
   char line[512];
 
   if (file == NULL) {
@@ -41,7 +41,7 @@ int LoadCoursesFromFile(const char* filename, Course** head) {
 }
 
 int SaveCoursesToFile(const char* filename, const Course* head) {
-  FILE* file = fopen(filename, "w");
+  FILE* file = fopen(filename, "w");  // Requirement 5: File I/O write/update
   const Course* current = head;
 
   if (file == NULL) {

@@ -5,7 +5,7 @@
 #include <string.h>
 
 int AddCourse(Course** head, const char* name, int credits, const char* grade) {
-  Course* node = (Course*)malloc(sizeof(Course));
+  Course* node = (Course*)malloc(sizeof(Course));  // Requirement 3: malloc for dynamic data storage
   Course* current = NULL;
 
   if (node == NULL) {
@@ -161,7 +161,7 @@ void DisplayCoursesAndGpa(const Course* head) {
 }
 
 void PushActivity(ActivityNode** top, const char* action) {
-  ActivityNode* node = (ActivityNode*)malloc(sizeof(ActivityNode));
+  ActivityNode* node = (ActivityNode*)malloc(sizeof(ActivityNode));  // Requirement 3: malloc for stack node
 
   if (node == NULL) {
     return;
@@ -173,7 +173,7 @@ void PushActivity(ActivityNode** top, const char* action) {
     return;
   }
 
-  node->next = *top;
+  node->next = *top;  // Requirement 4: push onto stack via singly linked list pointer
   *top = node;
 }
 

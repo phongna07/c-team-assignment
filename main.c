@@ -57,7 +57,7 @@ static void HandleAddCourse(Course** head, ActivityNode** activity_top) {
   if (AddCourse(head, name, credits, grade)) {
     snprintf(activity, sizeof(activity), "Added %s", name);
     PushActivity(activity_top, activity);
-    SaveCoursesToFile("data.txt", *head);
+    SaveCoursesToFile("data.txt", *head);  // Requirement 5: update file after add
     printf("Course added successfully.\n");
   } else {
     printf("Could not add course.\n");
@@ -95,7 +95,7 @@ static void HandleEditCourse(Course* head, ActivityNode** activity_top) {
   if (EditCourseByIndex(head, index, name, credits, grade)) {
     snprintf(activity, sizeof(activity), "Edited %s", name);
     PushActivity(activity_top, activity);
-    SaveCoursesToFile("data.txt", head);
+    SaveCoursesToFile("data.txt", head);  // Requirement 5: update file after edit
     printf("Course edited successfully.\n");
   } else {
     printf("Course index not found.\n");
@@ -125,7 +125,7 @@ static void HandleDeleteCourse(Course** head, ActivityNode** activity_top) {
     } else {
       PushActivity(activity_top, "Removed a course");
     }
-    SaveCoursesToFile("data.txt", *head);
+    SaveCoursesToFile("data.txt", *head);  // Requirement 5: update file after delete
     printf("Course removed successfully.\n");
   } else {
     printf("Course index not found.\n");
@@ -135,15 +135,15 @@ static void HandleDeleteCourse(Course** head, ActivityNode** activity_top) {
 }
 
 int main(void) {
-  Course* course_head = NULL;
-  ActivityNode* activity_top = NULL;
+  Course* course_head = NULL;     // Requirement 2: struct + pointer-based course list
+  ActivityNode* activity_top = NULL;  // Requirement 4: stack top pointer (singly linked list)
   Course* course_current = NULL;
   Course* course_next = NULL;
   ActivityNode* activity_current = NULL;
   ActivityNode* activity_next = NULL;
   char input[32];
 
-  LoadCoursesFromFile("data.txt", &course_head);
+  LoadCoursesFromFile("data.txt", &course_head);  // Requirement 5: load persisted data from file
 
   while (1) {
     printf("\nWelcome to VinUni GPA management system!\n");

@@ -7,12 +7,12 @@ typedef struct Course {
   char* name;
   int credits;
   char* grade;
-  struct Course* next;
+  struct Course* next;  // Requirement 4: singly linked list node link
 } Course;
 
 typedef struct ActivityNode {
   char* action;
-  struct ActivityNode* next;
+  struct ActivityNode* next;  // Requirement 4: stack node link (singly linked list)
 } ActivityNode;
 
 int AddCourse(Course** head, const char* name, int credits, const char* grade);
