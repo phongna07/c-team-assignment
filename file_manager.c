@@ -1,11 +1,13 @@
+#define _POSIX_C_SOURCE 200809L
+
 #include "file_manager.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int LoadCoursesFromFile(const char* filename, Course** head) {
-  FILE* file = fopen(filename, "r");  // Requirement 5: File I/O read
+int LoadCoursesFromFile(const char *filename, Course **head) {
+  FILE *file = fopen(filename, "r"); // Requirement 5: File I/O read
   char line[512];
 
   if (file == NULL) {
@@ -13,10 +15,10 @@ int LoadCoursesFromFile(const char* filename, Course** head) {
   }
 
   while (fgets(line, sizeof(line), file) != NULL) {
-    char* course_name = NULL;
-    char* credits_text = NULL;
-    char* grade = NULL;
-    char* save_ptr = NULL;
+    char *course_name = NULL;
+    char *credits_text = NULL;
+    char *grade = NULL;
+    char *save_ptr = NULL;
     int credits = 0;
     size_t len = strlen(line);
 
@@ -40,16 +42,17 @@ int LoadCoursesFromFile(const char* filename, Course** head) {
   return 1;
 }
 
-int SaveCoursesToFile(const char* filename, const Course* head) {
-  FILE* file = fopen(filename, "w");  // Requirement 5: File I/O write/update
-  const Course* current = head;
+int SaveCoursesToFile(const char *filename, const Course *head) {
+  FILE *file = fopen(filename, "w"); // Requirement 5: File I/O write/update
+  const Course *current = head;
 
   if (file == NULL) {
     return 0;
   }
 
   while (current != NULL) {
-    fprintf(file, "%s|%d|%s\n", current->name, current->credits, current->grade);
+    fprintf(file, "%s|%d|%s\n", current->name, current->credits,
+            current->grade);
     current = current->next;
   }
 
