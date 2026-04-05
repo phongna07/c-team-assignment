@@ -1,9 +1,10 @@
-A sleek, graphical GPA management system built with C and GTK4. This application allows you to add, edit, remove, and view university courses, automatically calculating your cumulative GPA. It features a custom VinUni-inspired theme (Endeavor Blue and Mahogany Red) and persistent data storage.
+A graphical GPA management system built with C and GTK4. This app lets you add, edit, remove, and view courses while automatically calculating cumulative GPA. It includes a custom VinUni-inspired theme and persistent course storage in `data.txt`.
 
 ## Project Structure
 
 Make sure you have the following files in your project directory before compiling:
-* `gui.c` (The main GTK4 interface and application loop)
+* `main.c` (Application entry point)
+* `gui.c` & `gui.h` (GTK4 interface logic, callbacks, and GUI utilities)
 * `logic.c` & `logic.h` (Linked list and stack data structures)
 * `file_manager.c` & `file_manager.h` (File I/O for saving/loading data)
 * `data.txt` (Auto-generated to store your courses)
@@ -40,23 +41,22 @@ pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-pkgconf mingw-w64-x86_64-gtk4
 
 ## How to Compile
 
-Once GTK4 is installed, open your terminal (or MSYS2 MinGW64 terminal on Windows), navigate to the folder containing your code, and run this exact command:
+Once GTK4 is installed, open your terminal (or MSYS2 MinGW64 terminal on Windows), navigate to the folder containing your code, and build with Make:
 
 ```bash
-gcc gui.c logic.c file_manager.c -o gpa_manager $(pkg-config --cflags --libs gtk4)
+make
 ```
 
-**What this command does:**
-* `gcc`: Calls the C compiler.
-* `gui.c logic.c file_manager.c`: The source files being compiled together.
-* `-o gpa_manager`: Names the final executable file `gpa_manager`.
-* `$(pkg-config --cflags --libs gtk4)`: Automatically finds and links all the necessary GTK4 background libraries and headers.
+This builds the `gpa_manager` executable using:
+* `main.c` as the single entry point.
+* `gui.c` for GTK behavior and callbacks.
+* `logic.c` and `file_manager.c` for course logic and persistence.
 
 ---
 
 ## How to Run
 
-After a successful compilation, you will see a new executable file in your folder. Run the application from your terminal:
+After a successful build, run the app:
 
 **On Linux and macOS:**
 ```bash
@@ -67,3 +67,11 @@ After a successful compilation, you will see a new executable file in your folde
 ```bash
 ./gpa_manager.exe
 ```
+
+You can also use Make targets:
+
+```bash
+make run
+```
+
+`make gui` and `make run-gui` are kept as compatibility aliases and run the same GUI app.
