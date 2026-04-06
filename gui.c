@@ -39,6 +39,15 @@ void apply_style() {
       "treeview { background-color: #35426E; color: #FFFFFF; border: 2px solid "
       "#C4232A; }\n"
 
+      /* Make selected course row clearly visible */
+      "treeview.view row:selected,"
+      "treeview.view row:selected:focus,"
+      "treeview:selected,"
+      "treeview:selected:focus {"
+      "  background-color: #C4232A;"
+      "  color: #FFFFFF;"
+      "}\n"
+
       /* Text inputs */
       "entry {"
       "  background-image: none;"
